@@ -1,6 +1,7 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { IQuestion } from '../../lib/interfaces/questions';
+import SubmitButton from '../SubmitButton';
 import SurveyQuestion from './SurveyQuestion';
 
 interface IFormKeys {
@@ -8,30 +9,27 @@ interface IFormKeys {
 }
 
 const Form: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IFormKeys>();
+  const methods = useForm<IFormKeys>();
+  const { handleSubmit } = methods;
 
   const onSubmit = (data: IFormKeys) => {
     console.log(data);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      {questions.map(question => (
-        <SurveyQuestion
-          key={question.fieldName}
-          register={register}
-          errors={errors}
-          options={question.options}
-          fieldName={question.fieldName}
-          title={question.title}
-        />
-      ))}
-      <button>Submit</button>
-    </form>
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {questions.map(question => (
+          <SurveyQuestion
+            key={question.fieldName}
+            options={question.options}
+            fieldName={question.fieldName}
+            title={question.title}
+          />
+        ))}
+        <SubmitButton text='Submit' />
+      </form>
+    </FormProvider>
   );
 };
 
