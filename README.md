@@ -21,6 +21,7 @@ Create and share survey with the results
 - react
 - tailwind
 - react-hook-form
+- framer-motion
 
 ## Server
 
