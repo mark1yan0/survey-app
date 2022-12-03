@@ -9,7 +9,7 @@ const SurveyQuestion: React.FC<IQuestion> = ({ title, fieldName, options }) => {
   } = useFormContext();
 
   return (
-    <motion.div layout className='glass-card p-2 my-2 rounded transition-all'>
+    <motion.div layout className='glass-card p-2 my-2 rounded'>
       <h2 className='text-white'>{title}</h2>
       <div className='flex flex-col '>
         {options.map(option => (
