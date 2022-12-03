@@ -1,22 +1,23 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 function App() {
-  const [selected, setSelected] = useState('');
+  const { register, handleSubmit } = useForm();
+  // const [selected, setSelected] = useState('');
 
-  const changeHandler = (event: any) => {
-    setSelected(event.target.value);
+  // const changeHandler = (event: any) => {
+  //   setSelected(event.target.value);
+  // };
+
+  const onSubmit = (data: any) => {
+    console.log(data);
   };
 
   return (
     <div className='App'>
       <h1 className='text-xl text-teal-600'>My survey</h1>
 
-      <form
-        onSubmit={event => {
-          event.preventDefault();
-          alert(`You selected: ${selected}`);
-        }}
-      >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className='border rounded bg-gray-200'>
           <h2>Cat or Dogs?</h2>
           <div>
@@ -24,10 +25,11 @@ function App() {
               <input
                 type='radio'
                 id='cat'
-                name='cat'
+                // name='cat'
                 value='cat'
-                checked={selected === 'cat'}
-                onChange={changeHandler}
+                {...register('cat')}
+                // checked={selected === 'cat'}
+                // onChange={changeHandler}
               />
               Cat
             </label>
@@ -38,10 +40,11 @@ function App() {
               <input
                 type='radio'
                 id='dog'
-                name='dog'
+                // name='dog'
                 value='dog'
-                checked={selected === 'dog'}
-                onChange={changeHandler}
+                {...register('dog')}
+                // checked={selected === 'dog'}
+                // onChange={changeHandler}
               />
               Dog
             </label>
