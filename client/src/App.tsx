@@ -1,13 +1,56 @@
 import React from 'react';
-import { FieldValues, useForm, UseFormRegister } from 'react-hook-form';
+import {
+  FieldErrorsImpl,
+  FieldValues,
+  useForm,
+  UseFormRegister,
+} from 'react-hook-form';
 
 interface IFormKeys {
   [key: string]: string;
 }
 
+interface IQuestionOptions {
+  value: string;
+  label: string;
+}
+
+interface IQuestion {
+  fieldName: string;
+  title: string;
+  options: IQuestionOptions[];
+}
+
+const questions: IQuestion[] = [
+  {
+    fieldName: 'cats_or_dogs',
+    title: 'Preferisci cani o gatti?',
+    options: [
+      { label: 'Cats', value: 'cats' },
+      { label: 'Dogs', value: 'dogs' },
+    ],
+  },
+  {
+    fieldName: 'windows_or_macos',
+    title: 'Preferisci Windwos o macos?',
+    options: [
+      { label: 'Windwos', value: 'windows' },
+      { label: 'MacOs', value: 'macos' },
+    ],
+  },
+  {
+    fieldName: 'react_or_vue',
+    title: 'Preferisci React o Vue?',
+    options: [
+      { label: 'React', value: 'react' },
+      { label: 'Vue', value: 'vue' },
+    ],
+  },
+];
+
 const defaultValues: IFormKeys = {
   cats_or_dogs: '',
-  boobs_or_ass: '',
+  windows_or_macos: '',
 };
 
 function App() {
@@ -19,7 +62,7 @@ function App() {
     defaultValues: defaultValues,
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: IFormKeys) => {
     console.log(data);
   };
 
@@ -28,44 +71,16 @@ function App() {
       <h1 className='text-xl text-teal-600'>My survey</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='border rounded my-2 bg-gray-200'>
-          <h2>Cat or Dogs?</h2>
-          <RadioInput
-            name='cats_or_dogs'
-            value='cats'
-            label='Cats'
+        {questions.map(question => (
+          <SurveyQuestion
+            key={question.fieldName}
             register={register}
+            errors={errors}
+            options={question.options}
+            fieldName={question.fieldName}
+            title={question.title}
           />
-          <RadioInput
-            name='cats_or_dogs'
-            value='dogs'
-            label='Dogs'
-            register={register}
-          />
-          {errors.cats_or_dogs && (
-            <p className='text-red-400'>Field is required</p>
-          )}
-        </div>
-
-        <div className='border rounded my-2 bg-gray-200'>
-          <h2>Boobs or Ass?</h2>
-          <RadioInput
-            name='boobs_or_ass'
-            value='ass'
-            label='Ass'
-            register={register}
-          />
-
-          <RadioInput
-            name='boobs_or_ass'
-            value='boobs'
-            label='Boobs'
-            register={register}
-          />
-          {errors.boobs_or_ass && (
-            <p className='text-red-400'>Field is required</p>
-          )}
-        </div>
+        ))}
         <button>Submit</button>
       </form>
     </div>
@@ -73,6 +88,35 @@ function App() {
 }
 
 export default App;
+
+interface ISurveyQuestionProps extends IQuestion {
+  register: UseFormRegister<FieldValues>;
+  errors: Partial<FieldErrorsImpl<{ [x: string]: string }>>;
+}
+
+const SurveyQuestion: React.FC<ISurveyQuestionProps> = ({
+  register,
+  errors,
+  title,
+  fieldName,
+  options,
+}) => {
+  return (
+    <div className='border rounded my-2 bg-gray-200'>
+      <h2>{title}</h2>
+      {options.map(option => (
+        <RadioInput
+          key={option.value}
+          name={fieldName}
+          value={option.value}
+          label={option.label}
+          register={register}
+        />
+      ))}
+      {errors[fieldName] && <p className='text-red-400'>Field is required</p>}
+    </div>
+  );
+};
 
 interface IRadioInput {
   name: string;
