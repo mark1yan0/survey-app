@@ -6,14 +6,21 @@ Create and share survey with the results
 
 ### Todo
 
-- [ ] form
-- [ ] handle form
-- [ ] create dynamic form
+- [x] basic form
+- [x] handle form
+- [x] create dynamic form
+  - [ ] implement useFieldArray logic
+  - [ ] add fields via UI
+- [x] basic styles
+- [ ] input components
+  - [ ] text-field
+  - [ ] checkbox
 
 ### Tools
 
 - react
 - tailwind
+- react-hook-form
 
 ## Server
 
