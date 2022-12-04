@@ -27,7 +27,7 @@ Create and share survey with the results
 
 ### Todo
 
-- [ ] setup basic server
+- [x] setup basic server
 - [ ] connect to db
 - [ ] model
 - [ ] define routes
@@ -35,6 +35,6 @@ Create and share survey with the results
 
 ## Tools
 
-- mongodb
+- mongodb/mongoose
 - express
 - nodemon
