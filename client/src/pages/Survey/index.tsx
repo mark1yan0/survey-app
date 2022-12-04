@@ -1,10 +1,9 @@
-import React from 'react';
-import Form from '../components/Form';
-import mockQuestions from '../lib/mock/mock-questions';
+import Form from '../../components/Form';
+import mockQuestions from '../../lib/mock/mock-questions';
 const MOCK_QUESTIONS = mockQuestions;
 import { useParams } from 'react-router-dom';
 
-const Survey = () => {
+const SurveyPage = () => {
   const { surveyId } = useParams<{ surveyId: string }>();
   return (
     <>
@@ -14,4 +13,4 @@ const Survey = () => {
   );
 };
 
-export default Survey;
+export default SurveyPage;

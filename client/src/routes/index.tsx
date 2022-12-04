@@ -1,15 +1,22 @@
 import { createBrowserRouter } from 'react-router-dom';
 import HomePage from '../pages/Home';
+import RootLayout from '../pages/RootLayout';
 import SurveyPage from '../pages/Survey';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
-  },
-  {
-    path: '/survey/:surveyId',
-    element: <SurveyPage />,
+    element: <RootLayout />,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: '/survey/:surveyId',
+        element: <SurveyPage />,
+      },
+    ],
   },
 ]);
 
