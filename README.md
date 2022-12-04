@@ -12,7 +12,7 @@ Create and share survey with the results
   - [ ] implement useFieldArray logic
   - [ ] add forms via UI builder
 - [x] basic styles
-- [ ] add routing
+- [x] add routing
 - [ ] input components
   - [ ] text-field
   - [ ] checkbox
