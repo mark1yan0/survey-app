@@ -1,6 +1,6 @@
 import React from 'react';
+import Form, { IFormKeys } from '../../components/Form';
 import { ISurvey } from '../../lib/interfaces/questions';
-import Form, { IFormKeys } from '../Form';
 import SurveyQuestion from './SurveyQuestion';
 
 const Survey: React.FC<{ survey: ISurvey }> = ({ survey }) => {

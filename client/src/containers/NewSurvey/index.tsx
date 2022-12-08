@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ISurvey } from '../../lib/interfaces/questions';
-import Form from '../Form';
-import Input from '../Form/Fields/Input';
 import Questions from './Questions';
 import createSurvey from '../../lib/api/create-survey';
 import generateSurveyLink from '../../lib/helpers/generate-survey-link';
 import { initialValues } from './config';
-import Modal from '../Modal';
 import ModalContent from './ModalContent';
+import Input from '../../components/Form/Fields/Input';
+import Modal from '../../components/Modal';
+import Form from '../../components/Form';
 
 /**
  * TODO:

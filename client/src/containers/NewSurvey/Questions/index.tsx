@@ -1,5 +1,5 @@
 import { useFieldArray } from 'react-hook-form';
-import Input from '../../Form/Fields/Input';
+import Input from '../../../components/Form/Fields/Input';
 import QuestionOptions from './QuestionOptions';
 
 const Questions: React.FC<{
