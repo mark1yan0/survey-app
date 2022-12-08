@@ -22,6 +22,7 @@ const Form: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
         {questions.map(question => (
           <SurveyQuestion
             key={question.fieldName}
+            type={question.type}
             options={question.options}
             fieldName={question.fieldName}
             title={question.title}

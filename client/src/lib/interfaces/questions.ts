@@ -2,6 +2,7 @@ export interface ISurvey {
   author: string;
   author_id: string;
   title: string;
+  type: string;
   questions: IQuestion[];
 }
 
@@ -15,4 +16,5 @@ export interface IQuestion {
 export interface IQuestionOptions {
   value: string;
   label: string;
+  type: string; // ? SHOULD be: radio, checkbox, input
 }

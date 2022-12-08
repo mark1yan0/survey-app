@@ -3,7 +3,13 @@ import { IQuestion } from '../../../lib/interfaces/questions';
 import RadioInput from '../Fields/Radio';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const SurveyQuestion: React.FC<IQuestion> = ({ title, fieldName, options }) => {
+// TODO: options should have types
+const SurveyQuestion: React.FC<IQuestion> = ({
+  title,
+  fieldName,
+  options,
+  type,
+}) => {
   const {
     formState: { errors },
   } = useFormContext();
@@ -11,6 +17,7 @@ const SurveyQuestion: React.FC<IQuestion> = ({ title, fieldName, options }) => {
   return (
     <motion.div layout className='glass-card p-2 my-2 rounded'>
       <h2 className='text-white'>{title}</h2>
+      <p>{type}</p>
       <div className='flex flex-col '>
         {options.map(option => (
           <RadioInput
@@ -18,6 +25,7 @@ const SurveyQuestion: React.FC<IQuestion> = ({ title, fieldName, options }) => {
             name={fieldName}
             value={option.value}
             label={option.label}
+            type='Radio'
           />
         ))}
       </div>

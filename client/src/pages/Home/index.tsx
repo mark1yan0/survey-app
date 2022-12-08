@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import NewSurvey from '../../components/NewSurvey';
 
 const MOCK_SURVEY_ID = '638f9625063d626de35a0fa2';
 
@@ -10,6 +11,8 @@ const HomePage = () => {
           Mock survey
         </NavLink>
       </button>
+
+      <NewSurvey />
     </>
   );
 };
