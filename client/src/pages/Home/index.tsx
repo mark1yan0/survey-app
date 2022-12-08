@@ -1,10 +1,13 @@
-import { NavLink } from 'react-router-dom';
 import NewSurvey from '../../components/NewSurvey';
+import SurveyList from '../../containers/SurveyList';
 
 const HomePage = () => {
   return (
     <>
-      {/* <LatestSurveys /> */}
+      <SurveyList />
+
+      <br />
+
       <NewSurvey />
     </>
   );
