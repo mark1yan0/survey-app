@@ -13,7 +13,7 @@ const Survey: React.FC<{ survey: ISurvey }> = ({ survey }) => {
       <h1 className='text-xl text-white'>{survey.title}</h1>
       <p className='text-white'>Author: {survey.author}</p>
       <Form onSubmit={onSubmit}>
-        {survey.questions.map(question => (
+        {survey?.questions?.map(question => (
           <SurveyQuestion
             key={question.fieldName}
             type={question.type}

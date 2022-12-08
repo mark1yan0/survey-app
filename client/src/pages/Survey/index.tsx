@@ -6,6 +6,7 @@ import getSurveyById from '../../lib/api/get-survey-by-id';
 
 const SurveyPage = () => {
   const { surveyId } = useParams<{ surveyId: string }>();
+  // TODO: improve error handling and not found cases
   const { data, error } = useSWR<{ data: ISurvey }>(surveyId, getSurveyById);
 
   if (!data) {
