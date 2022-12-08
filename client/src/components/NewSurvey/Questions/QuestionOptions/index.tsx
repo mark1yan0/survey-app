@@ -9,19 +9,31 @@ const QuestionOptions: React.FC<{
     name: `questions.${index}.options`,
     control,
   });
+
+  const handleRemove = (idx: number) => remove(idx);
+
+  const handleAppend = () =>
+    append({
+      label: '',
+      value: '',
+      type: '',
+    });
+
   return (
     <div>
       {fields.map((field, idx) => (
         <section key={field.id} className='bg-black/30 p-3 my-1 rounded'>
           <div className='flex gap-2 items-center mb-2'>
             <h2>Option #{idx + 1}</h2>
-            <button
-              className='bg-white text-black rounded p-1 my-1'
-              type='button'
-              onClick={() => remove(idx)}
-            >
-              Remove option
-            </button>
+            {fields.length > 1 && (
+              <button
+                className='add-remove-btn'
+                type='button'
+                onClick={handleRemove.bind(null, idx)}
+              >
+                Remove option
+              </button>
+            )}
           </div>
           <Input
             name={`questions.${index}.options.${idx}.label`}
@@ -42,18 +54,7 @@ const QuestionOptions: React.FC<{
         </section>
       ))}
 
-      <button
-        className='bg-white text-black rounded p-3 my-1'
-        type='button'
-        onClick={() =>
-          append({
-            fieldName: '',
-            title: '',
-            type: '',
-            options: [],
-          })
-        }
-      >
+      <button className='add-remove-btn' type='button' onClick={handleAppend}>
         Add option
       </button>
     </div>

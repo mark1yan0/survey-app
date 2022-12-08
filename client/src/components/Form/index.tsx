@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import SubmitButton from '../SubmitButton';
+import SubmitButton from '../Buttons/SubmitButton';
 
 export interface IFormKeys {
   [key: string]: string;

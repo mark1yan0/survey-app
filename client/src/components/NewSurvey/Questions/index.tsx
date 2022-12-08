@@ -11,6 +11,22 @@ const Questions: React.FC<{
     control,
   });
 
+  const handleRemove = (idx: number) => remove(idx);
+
+  const handleAppend = () =>
+    append({
+      fieldName: '',
+      title: '',
+      type: '',
+      options: [
+        {
+          label: '',
+          value: '',
+          type: '',
+        },
+      ],
+    });
+
   return (
     <>
       {fields.map((field, index) => (
@@ -20,13 +36,15 @@ const Questions: React.FC<{
         >
           <div className='flex gap-2 items-center mb-2'>
             <h2>Question #{index + 1}</h2>
-            <button
-              className='bg-white text-black rounded p-1 my-1'
-              type='button'
-              onClick={() => remove(index)}
-            >
-              Remove question
-            </button>
+            {fields.length > 1 && (
+              <button
+                className='add-remove-btn'
+                type='button'
+                onClick={handleRemove.bind(null, index)}
+              >
+                Remove question
+              </button>
+            )}
           </div>
           {/* TODO: could be automatically calculated from title? */}
           <Input
@@ -40,18 +58,7 @@ const Questions: React.FC<{
         </section>
       ))}
 
-      <button
-        className='bg-white text-black rounded p-3 my-1'
-        type='button'
-        onClick={() =>
-          append({
-            fieldName: '',
-            title: '',
-            type: '',
-            options: [],
-          })
-        }
-      >
+      <button className='add-remove-btn' type='button' onClick={handleAppend}>
         Add question
       </button>
     </>
