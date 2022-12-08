@@ -30,10 +30,11 @@ Create and share survey with the results
 ### Todo
 
 - [x] setup basic server
-- [ ] connect to db
-- [ ] model
-- [ ] define routes
-- [ ] controller
+- [x] connect to db
+- [ ] models /kinda
+- [ ] define routes and controllers
+  - [x] create new survey
+  - [x] get existing survey
 
 ## Tools
 

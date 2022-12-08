@@ -1,17 +1,12 @@
 import mongoose from 'mongoose';
+import { ISurvey } from './interfaces/Survey';
 
 // TODO: add survey interface
 // TODO: define a correct model
 // TODO: create methods to create, get, and delete a survey
 // TODO: define correct names for db
 
-// interface ISurvey {
-//   author: string;
-//   author_id: string;
-//   questions: Array<any>;
-// }
-
-const SurveySchema = new mongoose.Schema(
+const SurveySchema = new mongoose.Schema<ISurvey>(
   {
     author: {
       type: String,
@@ -21,15 +16,29 @@ const SurveySchema = new mongoose.Schema(
       type: String,
       unique: true,
     },
-    questions: {
-      type: Array,
+    title: {
+      type: String,
       required: true,
-      // should be linked the schema of the question
     },
+    type: { type: String },
+    questions: [
+      {
+        fieldName: String,
+        title: String,
+        type: { type: String }, // mongoose will interpret this as type definition and not actual key
+        options: [
+          {
+            value: String,
+            type: { type: String },
+            label: String,
+          },
+        ],
+      },
+    ],
   },
   { timestamps: true }
 );
 
-const Survey = mongoose.model('Survey', SurveySchema);
+const Survey = mongoose.model<ISurvey>('Survey', SurveySchema);
 
 export default Survey;

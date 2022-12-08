@@ -1,37 +1,19 @@
 require('dotenv').config();
-import express, { Request, Response } from 'express';
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 import connectDb from './db';
-import { Survey } from './models';
+
+//routes
+import { router } from './routes';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const controller = async (req: Request, res: Response) => {
-  const existingSurvey = await Survey.findOne({ author_id: 'uuuid' });
+app.use(bodyParser.json());
+app.use(cors());
 
-  if (existingSurvey) {
-    res
-      .status(200)
-      .json({ message: 'A survey already exists', survey: existingSurvey });
-    return;
-  }
-
-  const newSurvey = new Survey({
-    author: 'Mark',
-    author_id: 'uuuid',
-    questions: [
-      {
-        cats_or_dogs: '',
-        windows_or_macos: '',
-      },
-    ],
-  });
-
-  await newSurvey.save();
-  res.status(200).json({ message: 'new survey saved', survey: newSurvey });
-};
-
-app.get('/', controller);
+app.use('/survey', router);
 
 connectDb().then(async () => {
   console.log('Connected to db');
