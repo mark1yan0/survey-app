@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import ROUTES from '../lib/constants/routes';
 import NewSurvey from '../containers/NewSurvey';
 import NotFound from '../pages/404';
 import HomePage from '../pages/Home';
@@ -7,19 +8,19 @@ import SurveyPage from '../pages/Survey';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: ROUTES.Home,
     element: <RootLayout />,
     children: [
       {
-        path: '/',
+        path: ROUTES.Home,
         element: <HomePage />,
       },
       {
-        path: 'survey/new',
+        path: ROUTES.New,
         element: <NewSurvey />,
       },
       {
-        path: '/survey/:surveyId',
+        path: ROUTES.Survey,
         element: <SurveyPage />,
       },
       {

@@ -1,6 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import useSWR from 'swr';
 import getAllSurveys from '../../lib/api/get-all-surveys';
+import makeRoutePath from '../../lib/helpers/make-route-path';
+import ROUTES from '../../lib/constants/routes';
+import apiEndpoints from '../../lib/constants/apiEndpoints';
 
 interface IRes {
   message: string;
@@ -8,7 +11,7 @@ interface IRes {
 }
 
 const SurveyList = () => {
-  const { data, error } = useSWR<IRes>('/all', getAllSurveys);
+  const { data, error } = useSWR<IRes>(apiEndpoints.getAll, getAllSurveys);
 
   if (!data) {
     return <p>Loading...</p>;
@@ -25,7 +28,7 @@ const SurveyList = () => {
         {data.surveys.map(survey => (
           <NavLink
             key={survey._id}
-            to={`/survey/${survey._id}`}
+            to={makeRoutePath(ROUTES.Survey, survey._id)}
             className='p-2 bg-slate-100 rounded'
           >
             {survey.name}

@@ -8,6 +8,7 @@ import {
 } from '../../lib/animations/modal';
 
 // TODO: dynamically import animation
+// TODO: remove scolling
 const Modal: React.FC<{
   show: boolean;
   setModal: (state: boolean) => void;
