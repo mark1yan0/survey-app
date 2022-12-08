@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import NewSurvey from '../containers/NewSurvey';
 import NotFound from '../pages/404';
 import HomePage from '../pages/Home';
 import RootLayout from '../pages/RootLayout';
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />,
+      },
+      {
+        path: 'survey/new',
+        element: <NewSurvey />,
       },
       {
         path: '/survey/:surveyId',
