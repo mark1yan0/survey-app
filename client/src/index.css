@@ -26,3 +26,7 @@ p {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
+
+.add-remove-btn {
+  @apply bg-white text-black rounded p-1 my-1;
+}

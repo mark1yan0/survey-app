@@ -1,36 +1,22 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { ISurvey } from '../../lib/interfaces/questions';
 import Survey from '../../components/Survey';
+import useSWR from 'swr';
+import getSurveyById from '../../lib/api/get-survey-by-id';
 
 const SurveyPage = () => {
   const { surveyId } = useParams<{ surveyId: string }>();
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState<ISurvey>();
-  const [isError, setIsError] = useState(false);
+  const { data, error } = useSWR<{ data: ISurvey }>(surveyId, getSurveyById);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/survey/${surveyId}`)
-      .then(res => res.json())
-      .then(data => {
-        setData(data.data);
-      })
-      .catch(err => {
-        console.error(err);
-        setIsError(true);
-      })
-      .finally(() => setIsLoading(false));
-  }, []);
-
-  if (isLoading) {
+  if (!data) {
     return <h1 className='text-white'>Loading...</h1>;
   }
 
-  if (!data || isError) {
+  if (error) {
     return <h1 className='text-white'>An error occured</h1>;
   }
 
-  return <Survey survey={data} />;
+  return <Survey survey={data.data} />;
 };
 
 export default SurveyPage;
