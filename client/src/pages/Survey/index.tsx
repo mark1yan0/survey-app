@@ -12,7 +12,7 @@ const SurveyPage = () => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/question/${surveyId}`)
+    fetch(`http://localhost:5000/survey/${surveyId}`)
       .then(res => res.json())
       .then(data => {
         setData(data.data);
@@ -39,7 +39,7 @@ const SurveyPage = () => {
         {data.title}: {surveyId}
       </h1>
       <p className='text-white'>Author: {data.author}</p>
-      <Form questions={data.questions} />;
+      <Form questions={data.questions} />
     </>
   );
 };
