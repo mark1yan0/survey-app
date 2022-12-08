@@ -32,7 +32,6 @@ const SurveyPage = () => {
     return <h1 className='text-white'>An error occured</h1>;
   }
 
-  console.log(data);
   return (
     <>
       <h1 className='text-xl text-white'>

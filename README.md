@@ -9,8 +9,12 @@ Create and share survey with the results
 - [x] basic form
 - [x] handle form
 - [x] create dynamic form
-  - [ ] implement useFieldArray logic
-  - [ ] add forms via UI builder
+- [ ] add forms via UI builder
+  - [x] implement useFieldArray logic
+  - [x] basic radio form
+  - [x] generate survey link
+  - [ ] add more field types
+  - [ ] add more options
 - [x] basic styles
 - [x] add routing
 - [ ] input components

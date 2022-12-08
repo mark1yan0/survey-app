@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
+import { NavLink } from 'react-router-dom';
 import {
   IQuestion,
   IQuestionOptions,
@@ -26,6 +27,19 @@ const initialValues: Partial<ISurvey> = {
   ],
 };
 
+function generateSurveyLink(id: string) {
+  const origin = location.origin;
+  return `${origin}/survey/${id}`;
+}
+
+/**
+ * TODO:
+ * - refactor
+ * - display and can copy generated link
+ * - better UI
+ * - animations
+ * - react query
+ */
 const NewSurvey = () => {
   // const [questions, setQuestions] = useState<IQuestion[]>([]);
   const [surveyId, setSurveyId] = useState();
@@ -38,16 +52,28 @@ const NewSurvey = () => {
   });
 
   function submitHandler(values: ISurvey) {
-    fetch('http://localhost:5000/new-survey', {
+    fetch('http://localhost:5000/survey/new', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(values),
-    }).then(res => res.json().then(data => setSurveyId(data)));
+    })
+      .then(res => res.json())
+      .then(data => {
+        generateSurveyLink(data.id);
+        setSurveyId(data.id);
+      });
   }
 
   return (
     <>
       <h1>New survey</h1>
-      {surveyId && <h1>{surveyId}</h1>}
+      {surveyId && (
+        <NavLink to={`/survey/${surveyId}`} className='text-white'>
+          Mock survey
+        </NavLink>
+      )}
       <form onSubmit={handleSubmit(submitHandler)}>
         <div className='glass-card flex flex-col p-2 rounded mt-2'>
           <label htmlFor='title' className='text-white'>
