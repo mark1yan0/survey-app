@@ -6,16 +6,18 @@ export interface IFormKeys {
   [key: string]: string;
 }
 
+// TODO: fix submit value types
 const Form: React.FC<{
   children: React.ReactNode;
-  onSubmit: (values: IFormKeys) => void;
-}> = ({ children, onSubmit }) => {
-  const methods = useForm<IFormKeys>();
+  onSubmit: (values: any) => void;
+  submitText?: string;
+}> = ({ children, onSubmit, submitText }) => {
+  const methods = useForm<any>();
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
+      <form className='flex flex-col' onSubmit={methods.handleSubmit(onSubmit)}>
         {children}
-        <SubmitButton text='Submit' />
+        <SubmitButton text={submitText ?? 'Submit'} />
       </form>
     </FormProvider>
   );
