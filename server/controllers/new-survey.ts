@@ -15,7 +15,7 @@ export default async (req: Request, res: Response) => {
     const savedSurvey = await newSurvey.save();
     res
       .status(201)
-      .json({ message: 'Survay saved successfully', id: savedSurvey._id });
+      .json({ message: 'Survey saved successfully', id: savedSurvey._id });
   } catch (err: any) {
     console.log(err);
     res.status(500).json({
