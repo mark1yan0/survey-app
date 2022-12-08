@@ -5,39 +5,15 @@ import { ISurvey } from '../../lib/interfaces/questions';
 import Form from '../Form';
 import Input from '../Form/Fields/Input';
 import Questions from './Questions';
-
-const initialValues: Partial<ISurvey> = {
-  title: '',
-  type: 'question',
-  questions: [
-    {
-      fieldName: '',
-      title: '',
-      type: 'radio',
-      options: [
-        {
-          value: '',
-          type: 'radio',
-          label: '',
-        },
-      ],
-    },
-  ],
-};
-
-function generateSurveyLink(id: string) {
-  const origin = location.origin;
-  return `${origin}/survey/${id}`;
-}
+import createSurvey from '../../lib/api/create-survey';
+import generateSurveyLink from '../../lib/helpers/generate-survey-link';
+import { initialValues } from './config';
 
 /**
  * TODO:
- * - refactor
  * - display and can copy generated link
- * - form validation
  * - better UI
  * - animations
- * - react query
  */
 const NewSurvey = () => {
   const [surveyId, setSurveyId] = useState();
@@ -45,20 +21,16 @@ const NewSurvey = () => {
     defaultValues: initialValues,
   });
 
-  function submitHandler(values: ISurvey) {
-    console.log(values);
-    // fetch('http://localhost:5000/survey/new', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(values),
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     generateSurveyLink(data.id);
-    //     setSurveyId(data.id);
-    // });
+  // loading
+  const [isLoading, setIsLoading] = useState(false);
+
+  // TODO: see if can be handled better with SWR
+  async function submitHandler(values: ISurvey) {
+    setIsLoading(true);
+    const data = await createSurvey(values);
+    generateSurveyLink(data.id);
+    setSurveyId(data.id);
+    setIsLoading(false);
   }
 
   return (
@@ -72,7 +44,10 @@ const NewSurvey = () => {
           Mock survey
         </NavLink>
       )}
-      <Form onSubmit={submitHandler} submitText='Create'>
+      <Form
+        onSubmit={submitHandler}
+        submitText={isLoading ? 'Creando...' : 'Create'}
+      >
         <div className='glass-card flex flex-col p-2 rounded mt-2'>
           <Input name='title' label='Title' required />
         </div>
