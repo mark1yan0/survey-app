@@ -1,9 +1,7 @@
-import Form from '../../components/Form';
-import mockQuestions from '../../lib/mock/mock-questions';
-const MOCK_QUESTIONS = mockQuestions;
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { IQuestion, ISurvey } from '../../lib/interfaces/questions';
+import { ISurvey } from '../../lib/interfaces/questions';
+import Survey from '../../components/Survey';
 
 const SurveyPage = () => {
   const { surveyId } = useParams<{ surveyId: string }>();
@@ -32,15 +30,7 @@ const SurveyPage = () => {
     return <h1 className='text-white'>An error occured</h1>;
   }
 
-  return (
-    <>
-      <h1 className='text-xl text-white'>
-        {data.title}: {surveyId}
-      </h1>
-      <p className='text-white'>Author: {data.author}</p>
-      <Form questions={data.questions} />
-    </>
-  );
+  return <Survey survey={data} />;
 };
 
 export default SurveyPage;

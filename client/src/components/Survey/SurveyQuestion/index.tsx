@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { IQuestion } from '../../../lib/interfaces/questions';
-import RadioInput from '../Fields/Radio';
 import { motion, AnimatePresence } from 'framer-motion';
+import RadioInput from '../../Form/Fields/Radio';
 
 // TODO: options should have types
 const SurveyQuestion: React.FC<IQuestion> = ({

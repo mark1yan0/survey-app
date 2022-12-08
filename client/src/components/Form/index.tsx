@@ -1,33 +1,20 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { IQuestion } from '../../lib/interfaces/questions';
 import SubmitButton from '../SubmitButton';
-import SurveyQuestion from './SurveyQuestion';
 
-interface IFormKeys {
+export interface IFormKeys {
   [key: string]: string;
 }
 
-const Form: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
+const Form: React.FC<{
+  children: React.ReactNode;
+  onSubmit: (values: IFormKeys) => void;
+}> = ({ children, onSubmit }) => {
   const methods = useForm<IFormKeys>();
-  const { handleSubmit } = methods;
-
-  const onSubmit = (data: IFormKeys) => {
-    console.log(data);
-  };
-
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {questions.map(question => (
-          <SurveyQuestion
-            key={question.fieldName}
-            type={question.type}
-            options={question.options}
-            fieldName={question.fieldName}
-            title={question.title}
-          />
-        ))}
+      <form onSubmit={methods.handleSubmit(onSubmit)}>
+        {children}
         <SubmitButton text='Submit' />
       </form>
     </FormProvider>
