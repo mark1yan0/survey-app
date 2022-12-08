@@ -22,6 +22,12 @@ Create and share survey with the results
 - [ ] input components
   - [ ] text-field
   - [ ] checkbox
+- [ ] adjust to new response structure
+- [ ] loading component
+- [ ] better error handling
+- [ ] resutls
+  - [ ] results page
+  - [ ] results charts
 
 ### Tools
 
@@ -30,6 +36,7 @@ Create and share survey with the results
 - react-hook-form
 - framer-motion
 - react-router-dom
+- swr
 
 ## Server
 
@@ -39,10 +46,12 @@ Create and share survey with the results
 - [x] connect to db
 - [ ] models /kinda
 - [ ] add ss validation
+- [ ] create response structure
 - [ ] define routes and controllers
   - [x] create new survey
   - [x] get existing survey
   - [x] get all
+  - [ ] generate and serve results
 
 ## Tools
 
