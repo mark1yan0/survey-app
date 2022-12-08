@@ -1,7 +1,8 @@
 import { useFormContext } from 'react-hook-form';
 import { IQuestion } from '../../../lib/interfaces/questions';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import RadioInput from '../../Form/Fields/Radio';
+import ErrorMessage from '../../Form/ErrorMessage';
 
 // TODO: options should have types
 const SurveyQuestion: React.FC<IQuestion> = ({
@@ -29,18 +30,7 @@ const SurveyQuestion: React.FC<IQuestion> = ({
           />
         ))}
       </div>
-      <AnimatePresence>
-        {errors[fieldName] && (
-          <motion.p
-            initial={{ height: 0 }}
-            animate={{ height: 16 }}
-            exit={{ height: 0 }}
-            className='text-xs text-red-700 overflow-hidden'
-          >
-            Field is required
-          </motion.p>
-        )}
-      </AnimatePresence>
+      <ErrorMessage errors={errors} fieldName={fieldName} />
     </motion.div>
   );
 };
