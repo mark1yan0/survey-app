@@ -1,10 +1,16 @@
 import { Request, Response } from 'express';
 import { Survey } from '../models';
 
+interface ISentResult {
+  question: string;
+  answer: string;
+}
+
 export default async (req: Request, res: Response) => {
   const { body } = req;
   const { id } = req.params;
   try {
+    // TODO: refactor with a transaction
     const survey = await Survey.findById(id);
 
     if (!survey) {
@@ -14,36 +20,38 @@ export default async (req: Request, res: Response) => {
       return;
     }
 
-    const sentAnswers: { key: string; answer: string }[] = body.results;
-    const results = survey.results;
-    console.log(results);
+    const sentAnswers: ISentResult[] = body.results;
+    sentAnswers.forEach(sent => {
+      const question = survey.questions.find(
+        question => question.fieldName === sent.question
+      );
 
-    let newAnswers: any[] = [];
-    sentAnswers.forEach(item => {
-      const found = results.find(result => result.key === item.key);
-      if (!found) {
-        console.log('not found');
+      if (!question) {
+        console.log('Question not found');
         return;
       }
 
-      // TODO: finish
-      newAnswers = [...found.answers, item.answer];
-      found.answers = newAnswers;
+      // this is the option of wich the count should be increased
+      const selectedOption = question.options.find(
+        option => option.value === sent.answer
+      );
+
+      if (!selectedOption) {
+        console.log('Option not found');
+        return;
+      }
+
+      selectedOption.count = selectedOption.count + 1;
     });
 
-    // await survey.update({
-    //   results:
-    // })
+    const newSurvey = await Survey.findByIdAndUpdate(id, survey, {
+      new: true,
+    });
 
     res.status(200).json({
-      messasge: 'found',
-      data: { newAnswers },
+      messasge: 'Response sent successfully',
+      data: newSurvey,
     });
-
-    // const savedSurvey = await newSurvey.save();
-    // res
-    //   .status(201)
-    //   .json({ message: 'Survey saved successfully', id: savedSurvey._id });
   } catch (err: any) {
     console.log(err);
     res.status(500).json({
