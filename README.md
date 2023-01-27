@@ -36,7 +36,7 @@ Create and share survey with the results
 - react-hook-form
 - framer-motion
 - react-router-dom
-- swr
+- swr TODO: change to react query
 
 ## Server
 

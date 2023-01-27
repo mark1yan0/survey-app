@@ -7,7 +7,7 @@ const HomePage = () => {
     <>
       <SurveyList />
       <NavLink
-        to={ROUTES.Home}
+        to={ROUTES.New}
         className='bg-gradient-to-tr from-accent-yellow to-secondary-main p-2 rounded absolute bottom-5 right-5'
       >
         Create new
