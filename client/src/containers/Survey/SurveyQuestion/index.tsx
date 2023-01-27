@@ -26,6 +26,7 @@ const SurveyQuestion: React.FC<IQuestion> = ({
             name={fieldName}
             value={option.value}
             label={option.label}
+            count={option.count} // TODO: need to see only if voted + better way to see it
             type='Radio'
           />
         ))}

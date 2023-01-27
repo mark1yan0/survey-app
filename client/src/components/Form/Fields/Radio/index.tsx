@@ -7,7 +7,12 @@ interface IRadioInputProps extends IQuestionOptions {
   name: string;
 }
 
-const RadioInput: React.FC<IRadioInputProps> = ({ name, label, value }) => {
+const RadioInput: React.FC<IRadioInputProps> = ({
+  name,
+  label,
+  value,
+  count,
+}) => {
   const [selected, setSelected] = useState(false);
   const context = useFormContext();
   const { register } = context;
@@ -19,20 +24,23 @@ const RadioInput: React.FC<IRadioInputProps> = ({ name, label, value }) => {
   return (
     <label
       htmlFor={value}
-      className={`cursor-pointer text-white bg-black/20 p-2 rounded mt-1 hover:bg-black/30 flex items-center gap-1 ${
+      className={`cursor-pointer text-white bg-black/20 p-2 rounded mt-1 hover:bg-black/30 flex items-center justify-between ${
         selected &&
         'bg-gradient-to-r from-secondary-main/30 to-accent-yellow/30'
       }`}
     >
-      <RadioCircle selected={selected} />
-      <input
-        className='appearance-none'
-        type='radio'
-        id={value}
-        value={value}
-        {...register(name, { required: true })}
-      />
-      {label}
+      <span className='flex items-center gap-1'>
+        <RadioCircle selected={selected} />
+        <input
+          className='appearance-none'
+          type='radio'
+          id={value}
+          value={value}
+          {...register(name, { required: true })}
+        />
+        {label}
+      </span>
+      <p>{count}</p>
     </label>
   );
 };
