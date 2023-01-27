@@ -17,4 +17,14 @@ export interface IQuestionOptions {
   value: string;
   label: string;
   type: string; // ? SHOULD be: radio, checkbox, input
+  count?: number;
+}
+
+export interface IVotingResult {
+  question: string;
+  answer: string;
+}
+
+export interface IVotingPayload {
+  results: IVotingResult[];
 }
