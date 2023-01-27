@@ -5,7 +5,10 @@ export default async function connectDb() {
     throw new Error('Error connecting to DB: a db URI env must be provided');
   }
   try {
-    return await mongoose.connect(process.env.MONGODB_URI);
+    console.log('Connecting to db...');
+    return await mongoose.connect(process.env.MONGODB_URI, {
+      dbName: process.env.DB_NAME,
+    });
   } catch (error) {
     console.log('Connection to DB error: ', error);
     return error;
