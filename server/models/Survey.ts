@@ -5,7 +5,6 @@ import { ISurvey } from './interfaces/Survey';
 // TODO: define a correct model
 // TODO: create methods to create, get, and delete a survey
 // TODO: define correct names for db
-
 const SurveySchema = new mongoose.Schema<ISurvey>(
   {
     author: {
@@ -31,16 +30,7 @@ const SurveySchema = new mongoose.Schema<ISurvey>(
             value: String,
             type: { type: String },
             label: String,
-          },
-        ],
-      },
-    ],
-    results: [
-      {
-        key: String,
-        answers: [
-          {
-            type: String || Number,
+            count: Number, // This will only work for this type of survey, will probably need to change it
           },
         ],
       },

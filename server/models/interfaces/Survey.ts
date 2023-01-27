@@ -18,6 +18,7 @@ interface IQuestionOptions {
   value: string;
   label: string;
   type: string;
+  count: number;
 }
 
 interface IResult {
