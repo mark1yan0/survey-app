@@ -25,9 +25,12 @@ Create and share survey with the results
 - [ ] adjust to new response structure
 - [ ] loading component
 - [ ] better error handling
+- [ ] if user voted, cannot vote again
 - [ ] resutls
   - [ ] results page
   - [ ] results charts
+  - [x] show results count
+  - [ ] format results in percentages
 
 ### Tools
 
@@ -48,10 +51,12 @@ Create and share survey with the results
 - [ ] add ss validation
 - [ ] create response structure
 - [ ] define routes and controllers
+- [ ] if user voted, cannot vote again
   - [x] create new survey
   - [x] get existing survey
   - [x] get all
-  - [ ] generate and serve results
+  - [x] generate and serve results
+  - [ ] endpoint to show results in a dedicated page
 
 ## Tools
 
