@@ -25,9 +25,12 @@ Create and share survey with the results
 - [ ] adjust to new response structure
 - [ ] loading component
 - [ ] better error handling
+
 - [ ] resutls
   - [ ] results page
   - [ ] results charts
+  - [x] show results count
+  - [ ] format results in percentages
 
 ### Tools
 
@@ -51,7 +54,8 @@ Create and share survey with the results
   - [x] create new survey
   - [x] get existing survey
   - [x] get all
-  - [ ] generate and serve results
+  - [x] generate and serve results
+  - [ ] endpoint to show results in a dedicated page
 
 ## Tools
 
