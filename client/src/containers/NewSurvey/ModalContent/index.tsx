@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import copyToClipboard from '../../../lib/helpers/copy-to-clipboard';
-import getSurveyIdFromUri from '../../../lib/helpers/get-survey-id-from-uri';
+import copyToClipboard from '../../../lib/helpers/copyToClipboard';
+import getSurveyIdFromUri from '../../../lib/helpers/getSurveyIdFromUri';
 import ROUTES from '../../../lib/constants/routes';
-import makeRoutePath from '../../../lib/helpers/make-route-path';
+import makeRoutePath from '../../../lib/helpers/makeRoutePath';
 
 const ModalContent: React.FC<{ uri: string | undefined }> = ({ uri }) => {
   if (!uri) {

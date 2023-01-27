@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import useSWR from 'swr';
-import getAllSurveys from '../../lib/api/get-all-surveys';
-import makeRoutePath from '../../lib/helpers/make-route-path';
+import getAllSurveys from '../../lib/api/getAllSurveys';
+import makeRoutePath from '../../lib/helpers/makeRoutePath';
 import ROUTES from '../../lib/constants/routes';
 import apiEndpoints from '../../lib/constants/apiEndpoints';
 

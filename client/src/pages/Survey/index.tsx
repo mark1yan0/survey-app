@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { ISurvey } from '../../lib/interfaces/questions';
 import useSWR from 'swr';
-import getSurveyById from '../../lib/api/get-survey-by-id';
+import getSurveyById from '../../lib/api/getSurveyById';
 import Survey from '../../containers/Survey';
 
 const SurveyPage = () => {
