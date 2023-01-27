@@ -4,6 +4,7 @@ export interface ISurvey {
   type: string;
   title: string;
   questions: IQuestion[];
+  results: IResult[];
 }
 
 interface IQuestion {
@@ -17,4 +18,9 @@ interface IQuestionOptions {
   value: string;
   label: string;
   type: string;
+}
+
+interface IResult {
+  key: string;
+  answers: string[] | number[];
 }

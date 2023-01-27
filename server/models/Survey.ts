@@ -35,6 +35,16 @@ const SurveySchema = new mongoose.Schema<ISurvey>(
         ],
       },
     ],
+    results: [
+      {
+        key: String,
+        answers: [
+          {
+            type: String || Number,
+          },
+        ],
+      },
+    ],
   },
   { timestamps: true }
 );
