@@ -36,8 +36,9 @@ const NewSurvey = () => {
     setShow(true);
   }
 
+  // TODO: make own page
   return (
-    <>
+    <section className='mb-4'>
       <h1>New survey</h1>
 
       <Form
@@ -66,7 +67,7 @@ const NewSurvey = () => {
       <Modal show={show} setModal={setShow}>
         <ModalContent uri={surveyLink} />
       </Modal>
-    </>
+    </section>
   );
 };
 

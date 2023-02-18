@@ -13,12 +13,12 @@ interface IRes {
 const SurveyList = () => {
   const { data, error } = useSWR<IRes>(apiEndpoints.getAll, getAllSurveys);
 
-  if (!data) {
-    return <p>Loading...</p>;
-  }
-
   if (error) {
     return <p>An error occured</p>;
+  }
+
+  if (!data) {
+    return <p>Loading...</p>;
   }
 
   return (
