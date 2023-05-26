@@ -5,6 +5,7 @@ import NotFound from '../pages/404';
 import HomePage from '../pages/Home';
 import RootLayout from '../pages/RootLayout';
 import SurveyPage from '../pages/Survey';
+import PageNotFound from '../pages/404';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       {
         path: ROUTES.Survey,
         element: <SurveyPage />,
+        errorElement: <PageNotFound />,
       },
       {
         path: '*',

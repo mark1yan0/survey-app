@@ -47,6 +47,7 @@ Create and share survey with the results
 
 - [x] setup basic server
 - [x] connect to db
+- [ ] make a vars file
 - [ ] models /kinda
 - [ ] add ss validation
 - [ ] create response structure
