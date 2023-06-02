@@ -9,6 +9,7 @@ import ModalContent from './ModalContent';
 import Input from '../../components/Form/Fields/Input';
 import Modal from '../../components/Modal';
 import Form from '../../components/Form';
+import Select from '../../components/Form/Fields/Select';
 
 /**
  * TODO:
@@ -52,15 +53,14 @@ const NewSurvey = () => {
         submitText={isLoading ? 'Creando...' : 'Create'}
       >
         <div className='glass-card flex flex-col p-2 rounded mt-2'>
-          <Input name='title' label='Title' required />
+          <Input name='title' label='Survey Name' required />
         </div>
         <div className='glass-card flex flex-col p-2 rounded mt-2'>
-          <label htmlFor='type' className='text-white'>
-            type
-          </label>
-          <select {...register('type')} id='type'>
-            <option value='question'>Question</option>
-          </select>
+          <Select
+            name='type'
+            label='Question Type'
+            selectOptions={[{ value: 'question', label: 'Question' }]}
+          />
         </div>
 
         <div className='mt-3'>

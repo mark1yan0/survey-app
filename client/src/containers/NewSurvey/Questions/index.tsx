@@ -1,6 +1,7 @@
 import { useFieldArray } from 'react-hook-form';
 import Input from '../../../components/Form/Fields/Input';
 import QuestionOptions from './QuestionOptions';
+import Select from '../../../components/Form/Fields/Select';
 
 const Questions: React.FC<{
   control: any;
@@ -35,7 +36,12 @@ const Questions: React.FC<{
           className='glass-card flex flex-col p-2 rounded mt-2'
         >
           <div className='flex gap-2 items-center mb-2'>
-            <h2>Question #{index + 1}</h2>
+            <h2>#{index + 1} </h2>
+            <Input
+              name={`questions.${index}.title`}
+              label='Question Name'
+              required
+            />
             {fields.length > 1 && (
               <button
                 className='add-remove-btn'
@@ -46,14 +52,15 @@ const Questions: React.FC<{
               </button>
             )}
           </div>
-          {/* TODO: could be automatically calculated from title? */}
-          <Input
-            name={`questions.${index}.fieldName`}
-            label='fieldName'
+          <Select
+            name={`questions.${index}.type`}
+            label='Question Type'
             required
+            selectOptions={[
+              { value: 'one_choise', label: 'One Choise' },
+              { value: 'multiple_choise', label: 'Multiple Choise' },
+            ]}
           />
-          <Input name={`questions.${index}.title`} label='Title' required />
-          <Input name={`questions.${index}.type`} label='Type' required />
           <QuestionOptions index={index} control={control} />
         </section>
       ))}

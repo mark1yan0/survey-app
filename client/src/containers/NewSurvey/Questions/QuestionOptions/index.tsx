@@ -24,7 +24,12 @@ const QuestionOptions: React.FC<{
       {fields.map((field, idx) => (
         <section key={field.id} className='bg-black/30 p-3 my-1 rounded'>
           <div className='flex gap-2 items-center mb-2'>
-            <h2>Option #{idx + 1}</h2>
+            <h2>#{idx + 1}</h2>
+            <Input
+              name={`questions.${index}.options.${idx}.label`}
+              label='Option Label'
+              required
+            />
             {fields.length > 1 && (
               <button
                 className='add-remove-btn'
@@ -35,22 +40,6 @@ const QuestionOptions: React.FC<{
               </button>
             )}
           </div>
-          <Input
-            name={`questions.${index}.options.${idx}.label`}
-            label='Label'
-            required
-          />
-          {/* TODO: value should be the label? */}
-          <Input
-            name={`questions.${index}.options.${idx}.value`}
-            label='Value'
-            required
-          />
-          <Input
-            name={`questions.${index}.options.${idx}.type`}
-            label='Type'
-            required
-          />
         </section>
       ))}
 
