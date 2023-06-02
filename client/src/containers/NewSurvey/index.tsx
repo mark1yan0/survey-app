@@ -27,13 +27,19 @@ const NewSurvey = () => {
   const [show, setShow] = useState(false);
   const [surveyLink, setSurveyLink] = useState<string>();
 
-  // TODO: see if can be handled better with SWR
+  // TODO: should be a mutation
   async function submitHandler(values: ISurvey) {
     setIsLoading(true);
-    const data = await createSurvey(values);
-    setSurveyLink(generateSurveyLink(data.id));
-    setIsLoading(false);
-    setShow(true);
+    try {
+      const data = await createSurvey(values);
+      setSurveyLink(generateSurveyLink(data.id));
+      setShow(true);
+    } catch (error) {
+      // TODO: manage errors with error boundary
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   // TODO: make own page

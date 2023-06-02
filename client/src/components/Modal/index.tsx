@@ -29,7 +29,7 @@ const Modal: React.FC<{
           initial='closed'
           animate='opened'
           exit='closed'
-          className='w-full h-screen absolute top-0 left-0 bg-black/50 grid place-items-center'
+          className='w-full h-screen absolute top-0 left-0 bg-black/50 grid place-items-center z-50'
           onClick={closeModal}
         >
           <motion.div

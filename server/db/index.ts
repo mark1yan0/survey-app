@@ -8,7 +8,7 @@ export default async function connectDb() {
   try {
     console.log('Connecting to db...');
     return await mongoose.connect(vars.mongodb_uri, {
-      dbName: '', //vars.mongodb_name,
+      dbName: vars.mongodb_name,
     });
   } catch (error) {
     console.log('Connection to DB error: ', error);

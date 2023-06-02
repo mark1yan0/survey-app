@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  client:
+    build: ./client # actual build of the project. Will read the contents of the Dockerfile
+    container_name: survey_frontend
+    env_file:
+      - ./client/.env # load .env inside container
+    ports:
+      - 3000:3000 # expose ports
+    volumes:
+      - ./client:/client/app # mount volumes from frontend project inside container working directory
+      - /client/app/node_modules
+    depends_on:
+      - api
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    volumes: # used to persist db on local machine
+      - ./_mongodb:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: local
+      MONGO_INITDB_ROOT_PASSWORD: host
+    ports:
+      - 27018:27017
+
+  api:
+    build: ./server # actual build of the project. Will read the contents of the Dockerfile
+    container_name: survey_backend
+    env_file:
+      - ./server/.env # load .env inside container
+    ports:
+      - 8080:8080 # expose ports
+    volumes:
+      - ./server:/server/app # mount volumes from backend project inside container working directory
+    depends_on:
+      - mongodb
+
+volumes:
+  _mongodb: {}

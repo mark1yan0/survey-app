@@ -1,0 +1,11 @@
+**/node_modules/
+**/dist
+**/build
+.git
+npm-debug.log
+yarn-debug.log
+.coverage
+.coverage.*
+.env
+.env.example
+.aws

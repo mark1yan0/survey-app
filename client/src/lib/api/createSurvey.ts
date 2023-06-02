@@ -4,15 +4,19 @@ import apiEndpoints from '../constants/apiEndpoints';
 
 // TODO: put meaningful errors
 export default async function createSurvey(values: ISurvey) {
-  const res = await fetch(`${config.baseUrl}${apiEndpoints.createNew}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(values),
-  });
+  try {
+    const res = await fetch(`${config.baseUrl}${apiEndpoints.createNew}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
 
-  const data = await res.json();
+    const data = await res.json();
 
-  return data;
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 }
