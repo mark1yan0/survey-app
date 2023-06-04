@@ -2,10 +2,13 @@ import { Control, useFieldArray } from 'react-hook-form';
 import Input from '../../../../components/Form/Fields/Input';
 import { ISurvey } from '../../../../lib/interfaces/questions';
 
-const QuestionOptions: React.FC<{
+const QuestionOptions = ({
+  index,
+  control,
+}: {
   index: number;
   control: Control<ISurvey>;
-}> = ({ index, control }) => {
+}) => {
   const { fields, append, remove } = useFieldArray({
     name: `questions.${index}.options`,
     control,

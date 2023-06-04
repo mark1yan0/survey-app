@@ -4,10 +4,12 @@ import QuestionOptions from './QuestionOptions';
 import Select from '../../../components/Form/Fields/Select';
 import { ISurvey } from '../../../lib/interfaces/questions';
 
-const Questions: React.FC<{
+const Questions = ({
+  control,
+}: {
   control: Control<ISurvey>;
   register: UseFormRegister<ISurvey>;
-}> = ({ control }) => {
+}) => {
   const { fields, append, remove } = useFieldArray({
     name: 'questions',
     control,

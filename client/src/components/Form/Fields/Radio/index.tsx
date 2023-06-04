@@ -1,20 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { IQuestionOptions } from '../../../../lib/interfaces/questions';
 import RadioCircle from './RadioCircle';
 import { twMerge } from 'tailwind-merge';
-import Strings from '../../../../lib/constants/strings';
+import Strings from '@/lib/constants/strings';
+import { IQuestionOptions } from '@/lib/interfaces/questions';
 
 interface IRadioInputProps extends IQuestionOptions {
   name: string;
 }
 
-const RadioInput: React.FC<IRadioInputProps> = ({
-  name,
-  label,
-  value,
-  count,
-}) => {
+const RadioInput = ({ name, label, value, count }: IRadioInputProps) => {
   const [selected, setSelected] = useState(false);
   const context = useFormContext();
   const { register } = context;

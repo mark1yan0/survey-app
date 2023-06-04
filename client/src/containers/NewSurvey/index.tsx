@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { ISurvey } from '../../lib/interfaces/questions';
+import { ISurvey } from '@/lib/interfaces/questions';
 import Questions from './Questions';
-import createSurvey from '../../lib/api/createSurvey';
-import generateSurveyLink from '../../lib/helpers/generateSurveyLink';
+import createSurvey from '@/lib/api/createSurvey';
+import generateSurveyLink from '@/lib/helpers/generateSurveyLink';
 import { initialValues } from './config';
 import ModalContent from './ModalContent';
-import Input from '../../components/Form/Fields/Input';
-import Modal from '../../components/Modal';
-import Form from '../../components/Form';
-import Select from '../../components/Form/Fields/Select';
+import Input from '@/components/Form/Fields/Input';
+import Modal from '@/components/Modal';
+import Form from '@/components/Form';
+import Select from '@/components/Form/Fields/Select';
 
 /**
  * TODO:
@@ -47,7 +47,7 @@ const NewSurvey = () => {
     <section className='mb-4'>
       <h1>New survey</h1>
 
-      <Form
+      <Form<ISurvey>
         onSubmit={submitHandler}
         submitText={isLoading ? 'Creando...' : 'Create'}
       >

@@ -1,6 +1,6 @@
 import { twJoin } from 'tailwind-merge';
 
-const RadioCircle: React.FC<{ selected: boolean }> = ({ selected }) => {
+const RadioCircle = ({ selected }: { selected: boolean }) => {
   return (
     <span
       className={twJoin(

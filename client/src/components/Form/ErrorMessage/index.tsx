@@ -1,7 +1,7 @@
 import React from 'react';
 import { FieldErrors } from 'react-hook-form';
-import { ISurvey } from '../../../lib/interfaces/questions';
 import { ErrorMessage as HookFormErrorMessage } from '@hookform/error-message';
+import { ISurvey } from '@/lib/interfaces/questions';
 
 const ErrorMessage: React.FC<{
   errors: FieldErrors<ISurvey>;

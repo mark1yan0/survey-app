@@ -1,18 +1,20 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import SubmitButton from '../Buttons/SubmitButton';
-import { ISurvey } from '../../lib/interfaces/questions';
 
-export interface IFormKeys {
-  [key: string]: string;
+export interface IFormProps<T> {
+  children: React.ReactNode;
+  onSubmit: (values: T) => void;
+  submitText?: string;
 }
 
-const Form: React.FC<{
-  children: React.ReactNode;
-  onSubmit: (values: ISurvey) => void;
-  submitText?: string;
-}> = ({ children, onSubmit, submitText }) => {
-  const methods = useForm<ISurvey>();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Form = <G extends { [key: string]: any }>({
+  children,
+  onSubmit,
+  submitText,
+}: IFormProps<G>) => {
+  const methods = useForm<G>();
   return (
     <FormProvider {...methods}>
       <form className='flex flex-col' onSubmit={methods.handleSubmit(onSubmit)}>

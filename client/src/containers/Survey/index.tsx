@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Form, { IFormKeys } from '../../components/Form';
-import sendSurvey from '../../lib/api/sendSurvey';
-import { ISurvey, IVotingResult } from '../../lib/interfaces/questions';
+import Form from '@/components/Form';
+import sendSurvey from '@/lib/api/sendSurvey';
+import { ISurvey, IVotingResult } from '@/lib/interfaces/questions';
 import SurveyQuestion from './SurveyQuestion';
 
-const Survey: React.FC<{ survey: ISurvey }> = ({ survey }) => {
+const Survey = ({ survey }: { survey: ISurvey }) => {
   const { surveyId } = useParams<{ surveyId: string }>();
   const [state, setState] = useState(survey);
 
@@ -13,13 +13,16 @@ const Survey: React.FC<{ survey: ISurvey }> = ({ survey }) => {
     throw new Error('Survey id is required');
   }
 
-  const onSubmit = async (data: IFormKeys) => {
-    const results: IVotingResult[] = Object.keys(data).map(key => {
-      return {
-        question: key,
-        answer: data[key],
-      };
-    });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSubmit = async (data: ISurvey) => {
+    const results: IVotingResult[] = Object.entries(data).map(
+      ([key, value]) => {
+        return {
+          question: key,
+          answer: value,
+        };
+      }
+    );
 
     try {
       const updatedSurvey = await sendSurvey({ results }, surveyId);
@@ -36,7 +39,7 @@ const Survey: React.FC<{ survey: ISurvey }> = ({ survey }) => {
     <>
       <h1 className='text-xl text-white'>{survey.title}</h1>
       <p className='text-white'>Author: {survey.author}</p>
-      <Form onSubmit={onSubmit}>
+      <Form<ISurvey> onSubmit={onSubmit}>
         {state?.questions?.map(question => (
           <SurveyQuestion
             key={question.fieldName}

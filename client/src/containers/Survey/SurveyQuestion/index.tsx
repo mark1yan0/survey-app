@@ -5,12 +5,7 @@ import RadioInput from '../../../components/Form/Fields/Radio';
 import ErrorMessage from '../../../components/Form/ErrorMessage';
 
 // TODO: options should have types
-const SurveyQuestion: React.FC<IQuestion> = ({
-  title,
-  fieldName,
-  options,
-  type,
-}) => {
+const SurveyQuestion = ({ title, fieldName, options, type }: IQuestion) => {
   const {
     formState: { errors },
   } = useFormContext();

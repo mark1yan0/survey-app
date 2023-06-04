@@ -1,8 +1,8 @@
-const SubmitButton: React.FC<{ text: string }> = ({ text }) => {
+const SubmitButton = ({ text }: { text: string }) => {
   return (
     <button
       type='submit'
-      className='self-end rounded bg-gradient-to-r from-accent-pink to-accent-yellow px-4 py-2 font-bold text-white transition-all hover:scale-105'
+      className='from-accent-pink to-accent-yellow self-end rounded bg-gradient-to-r px-4 py-2 font-bold text-white transition-all hover:scale-105'
     >
       {text}
     </button>

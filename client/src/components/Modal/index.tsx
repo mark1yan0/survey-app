@@ -5,7 +5,7 @@ import {
   backdropVariants,
   buttonVariants,
   modalVariants,
-} from '../../lib/animations/modal';
+} from '@/lib/animations/modal';
 
 // TODO: dynamically import animation
 // TODO: remove scolling

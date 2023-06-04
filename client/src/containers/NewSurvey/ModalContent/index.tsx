@@ -7,7 +7,7 @@ import ROUTES from '../../../lib/constants/routes';
 import makeRoutePath from '../../../lib/helpers/makeRoutePath';
 import { twMerge } from 'tailwind-merge';
 
-const ModalContent: React.FC<{ uri: string | undefined }> = ({ uri }) => {
+const ModalContent = ({ uri }: { uri: string | undefined }) => {
   if (!uri) {
     return null;
   }

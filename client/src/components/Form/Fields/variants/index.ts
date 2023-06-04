@@ -1,4 +1,4 @@
-import { TFieldVariants } from '../../../../lib/interfaces/form';
+import { TFieldVariants } from '@/lib/interfaces/form';
 
 export const InputFieldVariants: Record<
   TFieldVariants,

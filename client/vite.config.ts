@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import path from 'node:path';
 import react from '@vitejs/plugin-react';
 import eslint from 'vite-plugin-eslint';
 
@@ -11,6 +12,9 @@ export default defineConfig({
       apply: 'build',
     },
   ],
+  resolve: {
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+  },
   // for docker
   server: {
     watch: {

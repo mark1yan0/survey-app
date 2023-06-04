@@ -2,9 +2,9 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import ErrorMessage from '../../ErrorMessage';
 import { twMerge } from 'tailwind-merge';
-import { IBaseFormField } from '../../../../lib/interfaces/form';
-import Strings from '../../../../lib/constants/strings';
-import fieldHasErrors from '../../../../lib/helpers/fieldHasErrors';
+import { IBaseFormField } from '@/lib/interfaces/form';
+import Strings from '@/lib/constants/strings';
+import fieldHasErrors from '@/lib/helpers/fieldHasErrors';
 import { InputFieldVariants } from '../variants';
 
 const Input: React.FC<IBaseFormField> = ({
