@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import ErrorMessage from '../../ErrorMessage';
@@ -14,7 +13,7 @@ const Select: React.FC<{
     formState: { errors },
   } = useFormContext();
   return (
-    <motion.div layout className='mt-2 flex flex-col rounded'>
+    <div className='mt-2 flex flex-col rounded'>
       <label htmlFor='title' className='text-white'>
         {label}
       </label>
@@ -30,7 +29,7 @@ const Select: React.FC<{
         ))}
       </select>
       <ErrorMessage errors={errors} fieldName={name} />
-    </motion.div>
+    </div>
   );
 };
 

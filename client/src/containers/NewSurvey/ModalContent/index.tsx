@@ -5,6 +5,7 @@ import copyToClipboard from '../../../lib/helpers/copyToClipboard';
 import getSurveyIdFromUri from '../../../lib/helpers/getSurveyIdFromUri';
 import ROUTES from '../../../lib/constants/routes';
 import makeRoutePath from '../../../lib/helpers/makeRoutePath';
+import { twMerge } from 'tailwind-merge';
 
 const ModalContent: React.FC<{ uri: string | undefined }> = ({ uri }) => {
   if (!uri) {
@@ -34,11 +35,12 @@ const ModalContent: React.FC<{ uri: string | undefined }> = ({ uri }) => {
             type: 'spring',
           }}
           title='Copy your link'
-          className={`cursor-pointer rounded bg-primary-main p-2 text-white ${
+          className={twMerge(
+            'bg-primary-main cursor-pointer rounded p-2 text-white',
             clicked
               ? 'bg-gradient-to-r from-accent-orange to-accent-yellow text-black'
               : ''
-          }`}
+          )}
           onClick={clickHandler}
         >
           {uri}
@@ -57,7 +59,7 @@ const ModalContent: React.FC<{ uri: string | undefined }> = ({ uri }) => {
         <motion.div layout className='mt-10'>
           <NavLink
             to={makeRoutePath(ROUTES.Survey, getSurveyIdFromUri(uri))}
-            className='rounded bg-gradient-to-r from-secondary-light to-accent-yellow p-2'
+            className='from-secondary-light to-accent-yellow rounded bg-gradient-to-r p-2'
           >
             View Your Survey
           </NavLink>

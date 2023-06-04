@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { IQuestionOptions } from '../../../../lib/interfaces/questions';
 import RadioCircle from './RadioCircle';
+import { twMerge } from 'tailwind-merge';
+import Strings from '../../../../lib/constants/strings';
 
 interface IRadioInputProps extends IQuestionOptions {
   name: string;
@@ -24,10 +26,11 @@ const RadioInput: React.FC<IRadioInputProps> = ({
   return (
     <label
       htmlFor={value}
-      className={`mt-1 flex cursor-pointer items-center justify-between rounded bg-black/20 p-2 text-white hover:bg-black/30 ${
+      className={twMerge(
+        'mt-1 flex cursor-pointer items-center justify-between rounded bg-black/20 p-2 text-white hover:bg-black/30',
         selected &&
-        'bg-gradient-to-r from-secondary-main/30 to-accent-yellow/30'
-      }`}
+          'from-secondary-main/30 to-accent-yellow/30 bg-gradient-to-r'
+      )}
     >
       <span className='flex items-center gap-1'>
         <RadioCircle selected={selected} />
@@ -36,7 +39,7 @@ const RadioInput: React.FC<IRadioInputProps> = ({
           type='radio'
           id={value}
           value={value}
-          {...register(name, { required: true })}
+          {...register(name, { required: Strings.Field.Required })}
         />
         {label}
       </span>

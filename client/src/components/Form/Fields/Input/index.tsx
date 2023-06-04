@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import ErrorMessage from '../../ErrorMessage';
@@ -24,10 +23,7 @@ const Input: React.FC<IBaseFormField> = ({
     formState: { errors },
   } = useFormContext();
   return (
-    <motion.div
-      layout
-      className={twMerge('mt-2 flex flex-col rounded', containerClass)}
-    >
+    <div className={twMerge('mt-2 flex flex-col rounded', containerClass)}>
       {label && (
         <label htmlFor='title' className='text-white'>
           {label}
@@ -48,7 +44,7 @@ const Input: React.FC<IBaseFormField> = ({
         })}
       />
       <ErrorMessage errors={errors} fieldName={name} />
-    </motion.div>
+    </div>
   );
 };
 

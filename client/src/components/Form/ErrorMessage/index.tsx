@@ -1,26 +1,22 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import { FieldErrors } from 'react-hook-form';
 import { ISurvey } from '../../../lib/interfaces/questions';
+import { ErrorMessage as HookFormErrorMessage } from '@hookform/error-message';
 
 const ErrorMessage: React.FC<{
   errors: FieldErrors<ISurvey>;
   fieldName: string;
 }> = ({ errors, fieldName }) => {
-  const currError = errors[fieldName as keyof FieldErrors<ISurvey>];
   return (
-    <AnimatePresence>
-      {currError && (
-        <motion.p
-          initial={{ height: 0 }}
-          animate={{ height: 16 }}
-          exit={{ height: 0 }}
-          className='mt-1 overflow-hidden text-xs text-red-700'
-        >
-          {currError.message}
-        </motion.p>
+    <HookFormErrorMessage
+      errors={errors}
+      name={fieldName}
+      render={({ message }) => (
+        <p className='mt-1 rounded border border-red-700 bg-red-200 p-2 text-xs text-red-700'>
+          {message}
+        </p>
       )}
-    </AnimatePresence>
+    />
   );
 };
 
