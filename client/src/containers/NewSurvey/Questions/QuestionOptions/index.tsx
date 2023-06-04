@@ -25,10 +25,11 @@ const QuestionOptions: React.FC<{
       {fields.map((field, idx) => (
         <section key={field.id} className='my-1 rounded bg-black/30 p-3'>
           <div className='mb-2 flex items-center gap-2'>
-            <h2>#{idx + 1}</h2>
+            <span className='mt-2'>#{idx + 1}</span>
             <Input
               name={`questions.${index}.options.${idx}.label`}
-              label='Option Label'
+              placeholder='Option Label'
+              containerClass='flex-1'
               required
             />
             {fields.length > 1 && (

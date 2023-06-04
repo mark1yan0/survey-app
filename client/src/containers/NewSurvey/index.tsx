@@ -43,7 +43,6 @@ const NewSurvey = () => {
     }
   }
 
-  // TODO: make own page
   return (
     <section className='mb-4'>
       <h1>New survey</h1>
@@ -52,9 +51,12 @@ const NewSurvey = () => {
         onSubmit={submitHandler}
         submitText={isLoading ? 'Creando...' : 'Create'}
       >
-        <div className='glass-card mt-2 flex flex-col rounded p-2'>
-          <Input name='title' label='Survey Name' required />
-        </div>
+        <Input
+          name='title'
+          required
+          placeholder='Survey Title'
+          className='glass text-[3rem]'
+        />
         <div className='glass-card mt-2 flex flex-col rounded p-2'>
           <Select
             name='type'

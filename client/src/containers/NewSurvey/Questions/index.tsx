@@ -36,12 +36,14 @@ const Questions: React.FC<{
           key={field.id}
           className='glass-card mt-2 flex flex-col rounded p-2'
         >
-          <div className='mb-2 flex items-center gap-2'>
-            <h2>#{index + 1} </h2>
+          <div className='mb-2 flex w-full items-center gap-2'>
+            <span className='mt-2 text-xl'>#{index + 1} </span>
             <Input
               name={`questions.${index}.title`}
-              label='Question Name'
+              placeholder='Question Name'
               required
+              className='text-[2rem]'
+              containerClass='flex-1'
             />
             {fields.length > 1 && (
               <button
