@@ -1,18 +1,18 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import SubmitButton from '../Buttons/SubmitButton';
+import { ISurvey } from '../../lib/interfaces/questions';
 
 export interface IFormKeys {
   [key: string]: string;
 }
 
-// TODO: fix submit value types
 const Form: React.FC<{
   children: React.ReactNode;
-  onSubmit: (values: any) => void;
+  onSubmit: (values: ISurvey) => void;
   submitText?: string;
 }> = ({ children, onSubmit, submitText }) => {
-  const methods = useForm<any>();
+  const methods = useForm<ISurvey>();
   return (
     <FormProvider {...methods}>
       <form className='flex flex-col' onSubmit={methods.handleSubmit(onSubmit)}>

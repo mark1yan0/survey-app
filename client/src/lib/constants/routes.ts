@@ -1,5 +1,3 @@
-import Survey from '../../containers/Survey';
-
 const prefix = '/survey';
 
 export default {

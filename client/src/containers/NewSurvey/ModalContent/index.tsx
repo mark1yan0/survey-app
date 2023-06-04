@@ -13,20 +13,20 @@ const ModalContent: React.FC<{ uri: string | undefined }> = ({ uri }) => {
 
   const [clicked, setClicked] = useState(false);
 
-  function clickHandler(event: React.MouseEvent<HTMLSpanElement>) {
+  function clickHandler() {
     copyToClipboard(uri as string);
     setClicked(true);
   }
 
   return (
     <>
-      <h2 className='text-black text-xl m-0'>
+      <h2 className='m-0 text-xl text-black'>
         Your survey has been successfully created. Make sure to copy the link to
         share with others
       </h2>
       <motion.section
         layout
-        className='h-2/3 flex flex-col justify-center items-center'
+        className='flex h-2/3 flex-col items-center justify-center'
       >
         <motion.span
           whileTap={{ scale: 0.95 }}
@@ -34,7 +34,7 @@ const ModalContent: React.FC<{ uri: string | undefined }> = ({ uri }) => {
             type: 'spring',
           }}
           title='Copy your link'
-          className={`bg-primary-main text-white p-2 rounded cursor-pointer ${
+          className={`cursor-pointer rounded bg-primary-main p-2 text-white ${
             clicked
               ? 'bg-gradient-to-r from-accent-orange to-accent-yellow text-black'
               : ''
@@ -57,7 +57,7 @@ const ModalContent: React.FC<{ uri: string | undefined }> = ({ uri }) => {
         <motion.div layout className='mt-10'>
           <NavLink
             to={makeRoutePath(ROUTES.Survey, getSurveyIdFromUri(uri))}
-            className='bg-gradient-to-r from-secondary-light to-accent-yellow p-2 rounded'
+            className='rounded bg-gradient-to-r from-secondary-light to-accent-yellow p-2'
           >
             View Your Survey
           </NavLink>

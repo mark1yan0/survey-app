@@ -1,20 +1,23 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
+import { FieldErrors } from 'react-hook-form';
+import { ISurvey } from '../../../lib/interfaces/questions';
 
-const ErrorMessage: React.FC<{ errors: any; fieldName: string }> = ({
-  errors,
-  fieldName,
-}) => {
+const ErrorMessage: React.FC<{
+  errors: FieldErrors<ISurvey>;
+  fieldName: string;
+}> = ({ errors, fieldName }) => {
+  const currError = errors[fieldName as keyof FieldErrors<ISurvey>];
   return (
     <AnimatePresence>
-      {errors[fieldName] && (
+      {currError && (
         <motion.p
           initial={{ height: 0 }}
           animate={{ height: 16 }}
           exit={{ height: 0 }}
-          className='text-xs text-red-700 overflow-hidden mt-1'
+          className='mt-1 overflow-hidden text-xs text-red-700'
         >
-          Field is required
+          {currError.message}
         </motion.p>
       )}
     </AnimatePresence>
@@ -22,8 +25,3 @@ const ErrorMessage: React.FC<{ errors: any; fieldName: string }> = ({
 };
 
 export default ErrorMessage;
-
-// TODO: errors not sìshowing for array fields
-// function makeErrorsObj(errors: any, fieldName: string) {
-
-// }

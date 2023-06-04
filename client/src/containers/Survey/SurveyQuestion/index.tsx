@@ -16,7 +16,7 @@ const SurveyQuestion: React.FC<IQuestion> = ({
   } = useFormContext();
 
   return (
-    <motion.div layout className='glass-card p-2 my-2 rounded'>
+    <motion.div layout className='glass-card my-2 rounded p-2'>
       <h2 className='text-white'>{title}</h2>
       <p>{type}</p>
       <div className='flex flex-col '>

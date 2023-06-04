@@ -52,10 +52,10 @@ const NewSurvey = () => {
         onSubmit={submitHandler}
         submitText={isLoading ? 'Creando...' : 'Create'}
       >
-        <div className='glass-card flex flex-col p-2 rounded mt-2'>
+        <div className='glass-card mt-2 flex flex-col rounded p-2'>
           <Input name='title' label='Survey Name' required />
         </div>
-        <div className='glass-card flex flex-col p-2 rounded mt-2'>
+        <div className='glass-card mt-2 flex flex-col rounded p-2'>
           <Select
             name='type'
             label='Question Type'

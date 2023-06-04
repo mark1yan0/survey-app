@@ -24,7 +24,7 @@ const RadioInput: React.FC<IRadioInputProps> = ({
   return (
     <label
       htmlFor={value}
-      className={`cursor-pointer text-white bg-black/20 p-2 rounded mt-1 hover:bg-black/30 flex items-center justify-between ${
+      className={`mt-1 flex cursor-pointer items-center justify-between rounded bg-black/20 p-2 text-white hover:bg-black/30 ${
         selected &&
         'bg-gradient-to-r from-secondary-main/30 to-accent-yellow/30'
       }`}

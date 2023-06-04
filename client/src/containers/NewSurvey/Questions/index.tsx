@@ -1,11 +1,12 @@
-import { useFieldArray } from 'react-hook-form';
+import { Control, UseFormRegister, useFieldArray } from 'react-hook-form';
 import Input from '../../../components/Form/Fields/Input';
 import QuestionOptions from './QuestionOptions';
 import Select from '../../../components/Form/Fields/Select';
+import { ISurvey } from '../../../lib/interfaces/questions';
 
 const Questions: React.FC<{
-  control: any;
-  register: any;
+  control: Control<ISurvey>;
+  register: UseFormRegister<ISurvey>;
 }> = ({ control }) => {
   const { fields, append, remove } = useFieldArray({
     name: 'questions',
@@ -33,9 +34,9 @@ const Questions: React.FC<{
       {fields.map((field, index) => (
         <section
           key={field.id}
-          className='glass-card flex flex-col p-2 rounded mt-2'
+          className='glass-card mt-2 flex flex-col rounded p-2'
         >
-          <div className='flex gap-2 items-center mb-2'>
+          <div className='mb-2 flex items-center gap-2'>
             <h2>#{index + 1} </h2>
             <Input
               name={`questions.${index}.title`}

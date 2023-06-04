@@ -29,7 +29,7 @@ const Modal: React.FC<{
           initial='closed'
           animate='opened'
           exit='closed'
-          className='w-full h-screen absolute top-0 left-0 bg-black/50 grid place-items-center z-50'
+          className='absolute left-0 top-0 z-50 grid h-screen w-full place-items-center bg-black/50'
           onClick={closeModal}
         >
           <motion.div
@@ -37,7 +37,7 @@ const Modal: React.FC<{
             initial='closed'
             animate='opened'
             exit='closed'
-            className='w-3/5 h-3/6 bg-white rounded p-5 relative overflow-hidden'
+            className='relative h-3/6 w-3/5 overflow-hidden rounded bg-white p-5'
           >
             {children}
             <motion.button

@@ -1,4 +1,3 @@
-import apiEndpoints from '../constants/apiEndpoints';
 import config from '../constants/config';
 
 // TODO: put meaningful errors

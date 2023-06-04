@@ -26,12 +26,12 @@ const SurveyList = () => {
   return (
     <>
       <h1>All surveys</h1>
-      <div className='grid grid-cols-3 gap-10 py-3 mb-2'>
+      <div className='mb-2 grid grid-cols-3 gap-10 py-3'>
         {data.surveys.map(survey => (
           <div key={survey._id}>
             <NavLink
               to={makeRoutePath(ROUTES.Survey, survey._id)}
-              className='p-2 bg-slate-100 rounded'
+              className='rounded bg-slate-100 p-2'
             >
               {survey.name}
             </NavLink>
@@ -52,7 +52,9 @@ const SurveyList = () => {
                     }
                   );
                   console.log(`survey ${survey._id} deleted`);
-                } catch (error) {}
+                } catch (error) {
+                  console.error(error);
+                }
               }}
             >
               delete

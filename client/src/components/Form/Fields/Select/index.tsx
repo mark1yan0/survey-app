@@ -14,12 +14,12 @@ const Select: React.FC<{
     formState: { errors },
   } = useFormContext();
   return (
-    <motion.div layout className='flex flex-col rounded mt-2'>
+    <motion.div layout className='mt-2 flex flex-col rounded'>
       <label htmlFor='title' className='text-white'>
         {label}
       </label>
       <select
-        className='p-2 rounded bg-slate-200'
+        className='rounded bg-slate-200 p-2'
         id={name}
         {...register(name, { required })}
       >
